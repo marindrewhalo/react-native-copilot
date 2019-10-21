@@ -40,6 +40,7 @@ const copilot = ({
   svgMaskPath,
   verticalOffset = 0,
   wrapperStyle,
+  arrowColor,
 } = {}) =>
   (WrappedComponent) => {
     class Copilot extends Component<any, State> {
@@ -199,6 +200,7 @@ const copilot = ({
               androidStatusBarVisible={androidStatusBarVisible}
               backdropColor={backdropColor}
               svgMaskPath={svgMaskPath}
+              arrowColor={arrowColor}
               ref={(modal) => { this.modal = modal; }}
             />
           </View>
