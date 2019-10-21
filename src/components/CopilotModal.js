@@ -142,6 +142,7 @@ class CopilotModal extends Component<Props, State> {
       tooltip.bottom = layout.height - (obj.top - MARGIN);
       arrow.borderBottomColor = this.props.arrowColor || '#fff';
       arrow.bottom = tooltip.bottom - (ARROW_SIZE * 2);
+      arrow.transform = [{ rotate: '180deg'}]
     }
 
     if (horizontalPosition === 'left') {
