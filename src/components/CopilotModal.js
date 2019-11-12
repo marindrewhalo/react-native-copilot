@@ -298,7 +298,7 @@ class CopilotModal extends Component<Props, State> {
         transparent
         supportedOrientations={['portrait', 'landscape']}
       >
-        <TouchableWithoutFeedback onPress={this.handleNext}>
+        <TouchableWithoutFeedback onPress={this.props.isLastStep ? this.handleStop : this.handleNext}>
           <View
             style={styles.container}
             onLayout={this.handleLayoutChange}
