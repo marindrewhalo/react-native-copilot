@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { Animated, Easing, View, NativeModules, Modal, StatusBar, Platform } from 'react-native';
+import { Animated, Easing, View, NativeModules, Modal, StatusBar, TouchableOpacity, Platform } from 'react-native';
 import Tooltip from './Tooltip';
 import StepNumber from './StepNumber';
 import styles, { MARGIN, ARROW_SIZE, STEP_NUMBER_DIAMETER, STEP_NUMBER_RADIUS } from './style';
@@ -298,13 +298,14 @@ class CopilotModal extends Component<Props, State> {
         transparent
         supportedOrientations={['portrait', 'landscape']}
       >
-        <View
+        <TouchableOpacity
           style={styles.container}
           onLayout={this.handleLayoutChange}
+          onPress={this.handleNext}
         >
           {contentVisible && this.renderMask()}
           {contentVisible && this.renderTooltip()}
-        </View>
+        </TouchableOpacity>
       </Modal>
     );
   }
