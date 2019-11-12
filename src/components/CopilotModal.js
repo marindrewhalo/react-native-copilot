@@ -298,13 +298,14 @@ class CopilotModal extends Component<Props, State> {
         transparent
         supportedOrientations={['portrait', 'landscape']}
       >
-        <TouchableWithoutFeedback
-          style={styles.container}
-          onLayout={this.handleLayoutChange}
-          onPress={this.handleNext}
-        >
-          {contentVisible && this.renderMask()}
-          {contentVisible && this.renderTooltip()}
+        <TouchableWithoutFeedback onPress={this.handleNext}>
+          <View
+            style={styles.container}
+            onLayout={this.handleLayoutChange}
+          >
+            {contentVisible && this.renderMask()}
+            {contentVisible && this.renderTooltip()}
+          </View>
         </TouchableWithoutFeedback>
       </Modal>
     );
