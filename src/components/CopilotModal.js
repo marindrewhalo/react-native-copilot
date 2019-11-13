@@ -129,7 +129,15 @@ class CopilotModal extends Component<Props, State> {
     const relativeToRight = Math.abs(center.x - layout.width);
 
     const verticalPosition = relativeToBottom > relativeToTop ? 'bottom' : 'top';
-    const horizontalPosition = relativeToLeft > relativeToRight ? 'left' : 'right';
+    const horizontalPosition = (() => {
+      const diff = Math.abs(relativeToLeft - relativeToRight)
+
+      if (diff < 40) {
+        return 'center'
+      }
+
+      return relativeToLeft > relativeToRight ? 'left' : 'right';
+    })()
 
     const tooltip = {};
     const arrow = {};
@@ -145,7 +153,11 @@ class CopilotModal extends Component<Props, State> {
       arrow.transform = [{ rotate: '180deg'}]
     }
 
-    if (horizontalPosition === 'left') {
+    if (horizontalPosition === 'center') {
+      tooltip.width = 285;
+      tooltip.left = obj.left + (obj.width - tooltip.width) / 2;
+      arrow.left = tooltip.left + (tooltip.width - ARROW_SIZE) / 2;
+    } else if (horizontalPosition === 'left') {
       tooltip.right = Math.max(layout.width - (obj.left + obj.width), 0);
       tooltip.right = tooltip.right === 0 ? tooltip.right + MARGIN : tooltip.right;
       tooltip.maxWidth = layout.width - tooltip.right - MARGIN;
