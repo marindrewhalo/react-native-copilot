@@ -203,7 +203,7 @@ const copilot = ({
               svgMaskPath={svgMaskPath}
               arrowColor={arrowColor}
               ref={(modal) => { this.modal = modal; }}
-              children={children(this.getStepNumber())}
+              children={children ? children(this.getStepNumber()) : undefined}
             />
           </View>
         );
