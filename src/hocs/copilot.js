@@ -41,6 +41,7 @@ const copilot = ({
   verticalOffset = 0,
   wrapperStyle,
   arrowColor,
+  children,
 } = {}) =>
   (WrappedComponent) => {
     class Copilot extends Component<any, State> {
@@ -202,6 +203,7 @@ const copilot = ({
               svgMaskPath={svgMaskPath}
               arrowColor={arrowColor}
               ref={(modal) => { this.modal = modal; }}
+              children={children(this.getStepNumber())}
             />
           </View>
         );

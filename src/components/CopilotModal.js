@@ -317,6 +317,7 @@ class CopilotModal extends Component<Props, State> {
           >
             {contentVisible && this.renderMask()}
             {contentVisible && this.renderTooltip()}
+            {contentVisible && this.props.children}
           </View>
         </TouchableWithoutFeedback>
       </Modal>
